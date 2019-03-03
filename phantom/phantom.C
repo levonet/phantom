@@ -240,21 +240,22 @@ void fd_list_t::foreach(void (fd_list_t::*fun)(int)) {
 	fd_guard_t fd_guard(fd);
 
 	while(true) {
-		char buf[1024];
-		ssize_t len = getdents(fd, buf, sizeof(buf));
+		// char buf[1024];
+		struct dirent dent;
+		// ssize_t len = getdents(fd, &dent, sizeof(dent));
 
-		if(!len)
-			break;
+		// if(!len)
+		// 	break;
 
-		if(len < 0) {
-			log_error("getdents: %m");
-			return;
-		}
+		// if(len < 0) {
+		// 	log_error("getdents: %m");
+		// 	return;
+		// }
 
-		ssize_t i = 0;
+		// ssize_t i = 0;
 
-		while(i < len) {
-			dirent *de = (dirent *)(buf + i);
+		while(getdents(fd, &dent, sizeof(dent)) > 0) {
+			dirent *de = &dent;
 			char const *ptr = de->d_name;
 
 			if(*ptr != '.') {
@@ -269,10 +270,10 @@ void fd_list_t::foreach(void (fd_list_t::*fun)(int)) {
 				if(fdn != fd) (this->*fun)(fdn);
 			}
 
-			i += de->d_reclen;
+			// i += de->d_reclen;
 		}
 
-		assert(i == len);
+		assert(true);
 	}
 }
 
