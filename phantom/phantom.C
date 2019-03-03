@@ -255,8 +255,8 @@ void fd_list_t::foreach(void (fd_list_t::*fun)(int)) {
 		// ssize_t i = 0;
 
 		while(getdents(fd, &dent, sizeof(dent)) > 0) {
-			dirent *de = &dent;
-			char const *ptr = de->d_name;
+			// dirent *de = &dent;
+			char const *ptr = dent.d_name;
 
 			if(*ptr != '.') {
 				int fdn = 0;
@@ -270,6 +270,7 @@ void fd_list_t::foreach(void (fd_list_t::*fun)(int)) {
 				if(fdn != fd) (this->*fun)(fdn);
 			}
 
+			lseek(fd, dent.d_off, SEEK_SET);
 			// i += de->d_reclen;
 		}
 
