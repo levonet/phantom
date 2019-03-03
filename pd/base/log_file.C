@@ -12,7 +12,7 @@
 #include "stat.H"
 
 #include <sys/stat.h>
-#include <sys/fcntl.h>
+#include <fcntl.h>
 #include <sys/file.h>
 
 namespace pd {
