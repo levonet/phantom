@@ -240,15 +240,14 @@ void fd_list_t::foreach(void (fd_list_t::*fun)(int)) {
 	fd_guard_t fd_guard(fd);
 
 	while(true) {
-		off_t unused;
 		char buf[1024];
-		ssize_t len = getdirentries(fd, buf, sizeof(buf), &unused);
+		ssize_t len = getdents(fd, buf, sizeof(buf));
 
 		if(!len)
 			break;
 
 		if(len < 0) {
-			log_error("getdirentries: %m");
+			log_error("getdents: %m");
 			return;
 		}
 
