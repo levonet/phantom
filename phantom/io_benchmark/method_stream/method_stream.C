@@ -344,7 +344,7 @@ struct tags_t : mcount_t::tags_t {
 
 		if(idx < vals_count) {
 			char buf[128];
-			char *res = strerror_r(vals[idx], buf, sizeof(buf));
+			char *res = strerror_r((char*)vals[idx], buf, sizeof(buf));
 			buf[sizeof(buf) - 1] = '\0';
 			out(str_t(res, strlen(res)));
 		}
