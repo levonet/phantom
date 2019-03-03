@@ -26,7 +26,7 @@ namespace pd {
 
 #elif defined(__x86_64__)
 
-#define PAGE_SIZE (4096)
+#define PAGE_SIZE PAGESIZE
 #define STACK_SIZE (24*1024*1024)
 #define MISC_REG_NUM (5)
 
