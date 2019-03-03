@@ -8,7 +8,7 @@
 #include "fd_guard.H"
 #include "exception.H"
 
-#include <sys/fcntl.h>
+#include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
 
