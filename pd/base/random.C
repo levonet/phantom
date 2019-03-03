@@ -13,7 +13,6 @@
 namespace pd {
 
 static __thread bool inited = false;
-// static __thread struct drand48_data data;
 
 inline void random_check() {
 	struct timeval now;
@@ -21,7 +20,6 @@ inline void random_check() {
 	if(!inited) {
 		gettimeofday(&now, (struct timezone *) 0);
 		srand48(now.tv_sec ^ now.tv_usec);
-		// srand48_r((uintptr_t)&data, &data);
 		inited = true;
 	}
 }
@@ -32,7 +30,6 @@ double random_F() {
 	random_check();
 
 	res = drand48();
-
 	if(res < 0)
 		throw exception_sys_t(log::error, errno, "drand48: %m");
 
@@ -56,7 +53,7 @@ int random_D() {
 
 	random_check();
 
-	res = mrand48()
+	res = mrand48();
 	if(res < 0)
 		throw exception_sys_t(log::error, errno, "mrand48: %m");
 
