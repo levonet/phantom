@@ -26,7 +26,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <dirent.h>
-#include <sys/signal.h>
+#include <signal.h>
 #include <sys/stat.h>
 
 using namespace pd;
