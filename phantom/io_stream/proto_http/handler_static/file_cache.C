@@ -11,7 +11,7 @@
 #include <pd/base/exception.H>
 
 #include <unistd.h>
-#include <sys/fcntl.h>
+#include <fcntl.h>
 #include <sys/stat.h>
 
 namespace phantom { namespace io_stream { namespace proto_http { namespace handler_static {
