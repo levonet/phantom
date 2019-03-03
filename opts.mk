@@ -40,7 +40,8 @@ CXXFLAGS = \
 	-fvisibility=hidden -fvisibility-inlines-hidden -fno-default-inline \
 	-fno-omit-frame-pointer -fno-common -fsigned-char \
 	-Wall -W -Werror -Wsign-promo -Woverloaded-virtual \
-	-Wno-ctor-dtor-privacy -Wno-non-virtual-dtor $(FIXWARN) $(CPPFLAGS) $(CXXFLAGS.$(<))
+	-Wno-ctor-dtor-privacy -Wno-non-virtual-dtor \
+	-Wno-missing-field-initializers $(FIXWARN) $(CPPFLAGS) $(CXXFLAGS.$(<))
 
 CFLAGS = \
 	-O$(OPT) $(CSTD) \
