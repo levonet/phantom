@@ -8,15 +8,20 @@
 #include "exception.H"
 
 #include <stdlib.h>
+#include <sys/time.h>
 
 namespace pd {
 
 static __thread bool inited = false;
-static __thread struct drand48_data data;
+// static __thread struct drand48_data data;
 
 inline void random_check() {
+	struct timeval now;
+
 	if(!inited) {
-		srand48_r((uintptr_t)&data, &data);
+		gettimeofday(&now, (struct timezone *) 0);
+		srand48(now.tv_sec ^ now.tv_usec);
+		// srand48_r((uintptr_t)&data, &data);
 		inited = true;
 	}
 }
@@ -26,8 +31,10 @@ double random_F() {
 
 	random_check();
 
-	if(drand48_r(&data, &res) < 0)
-		throw exception_sys_t(log::error, errno, "drand48_r: %m");
+	res = drand48();
+
+	if(res < 0)
+		throw exception_sys_t(log::error, errno, "drand48: %m");
 
 	return res;
 }
@@ -37,19 +44,21 @@ unsigned int random_U() {
 
 	random_check();
 
-	if(lrand48_r(&data, &res) < 0)
-		throw exception_sys_t(log::error, errno, "lrand48_r: %m");
+	res = lrand48();
+	if(res < 0)
+		throw exception_sys_t(log::error, errno, "lrand48: %m");
 
 	return res;
 }
 
 int random_D() {
-	long int res;
+	long res;
 
 	random_check();
 
-	if(mrand48_r(&data, &res) < 0)
-		throw exception_sys_t(log::error, errno, "mrand48_r: %m");
+	res = mrand48()
+	if(res < 0)
+		throw exception_sys_t(log::error, errno, "mrand48: %m");
 
 	return (int)res;
 }
