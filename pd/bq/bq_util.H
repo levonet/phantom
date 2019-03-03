@@ -11,6 +11,7 @@
 #include <pd/base/time.H>
 
 #include <sys/socket.h>
+#include <sys/sendfile.h>
 
 #pragma GCC visibility push(default)
 

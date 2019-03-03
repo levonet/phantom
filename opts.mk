@@ -36,14 +36,14 @@ DEPS = \
 	-MD -MF deps/$(subst /,%,$(@)).d
 
 CXXFLAGS = \
-	-g -O$(OPT) $(CXXSTD) \
+	-O$(OPT) $(CXXSTD) \
 	-fvisibility=hidden -fvisibility-inlines-hidden -fno-default-inline \
 	-fno-omit-frame-pointer -fno-common -fsigned-char \
 	-Wall -W -Werror -Wsign-promo -Woverloaded-virtual \
 	-Wno-ctor-dtor-privacy -Wno-non-virtual-dtor $(FIXWARN) $(CPPFLAGS) $(CXXFLAGS.$(<))
 
 CFLAGS = \
-	-g -O$(OPT) $(CSTD) \
+	-O$(OPT) $(CSTD) \
 	-fvisibility=hidden -fno-omit-frame-pointer -fno-common -fsigned-char \
 	-Wall -W -Werror $(FIXWARN) $(CPPFLAGS) $(CFLAGS.$(<))
 
