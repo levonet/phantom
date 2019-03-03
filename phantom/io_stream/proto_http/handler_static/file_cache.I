@@ -8,7 +8,7 @@
 
 #include "path_translation.H"
 
-#include <bits/alltypes.h>
+#include <sys/stat.h>
 #include <pd/base/list.H>
 #include <pd/base/list2.H>
 #include <pd/base/ref.H>
