@@ -12,11 +12,15 @@
 #include_next <pthread.h>
 #undef pthread_self
 
-__BEGIN_DECLS
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 pthread_t pthread_self(void) __THROW;
 
-__END_DECLS
+#ifdef __cplusplus
+}
+#endif
 
 #else
 

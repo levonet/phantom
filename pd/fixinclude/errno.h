@@ -15,11 +15,15 @@
 #include_next <errno.h>
 #undef __errno_location
 
-__BEGIN_DECLS
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 int *__errno_location(void) __THROW;
 
-__END_DECLS
+#ifdef __cplusplus
+}
+#endif
 
 #else
 
