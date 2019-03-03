@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-pthread_t pthread_self(void) __THROW;
+pthread_t pthread_self(void);
 
 #ifdef __cplusplus
 }

@@ -19,7 +19,7 @@
 extern "C" {
 #endif
 
-int *__errno_location(void) __THROW;
+int *__errno_location(void);
 
 #ifdef __cplusplus
 }

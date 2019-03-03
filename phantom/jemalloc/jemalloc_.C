@@ -4614,7 +4614,7 @@ extern "C" {
  */
 
 arena_id_t
-arena_create(void) __THROW
+arena_create(void)
 {
 	arena_t *arena;
 
@@ -4640,7 +4640,7 @@ arena_create(void) __THROW
 }
 
 void *
-arena_alloc(arena_id_t id, size_t size) __THROW
+arena_alloc(arena_id_t id, size_t size)
 {
 	arena_t *arena = (arena_t *)id;
 
@@ -4666,7 +4666,7 @@ arena_alloc(arena_id_t id, size_t size) __THROW
 }
 
 void *
-arena_realloc(arena_id_t id, void *ptr, size_t size) __THROW
+arena_realloc(arena_id_t id, void *ptr, size_t size)
 {
 	arena_t *arena = (arena_t *)id;
 
@@ -4693,7 +4693,7 @@ arena_realloc(arena_id_t id, void *ptr, size_t size) __THROW
 }
 
 void
-arena_free(arena_id_t id, void *ptr) __THROW
+arena_free(arena_id_t id, void *ptr)
 {
 	if (ptr != NULL) {
 		assert(malloc_initialized);
