@@ -344,9 +344,9 @@ struct tags_t : mcount_t::tags_t {
 
 		if(idx < vals_count) {
 			char buf[128];
-			if (!strerror_r(vals[idx], buf, sizeof(buf))) {
+			if (strerror_r(vals[idx], buf, sizeof(buf)) != -1) {
 				buf[sizeof(buf) - 1] = '\0';
-				out(CSTR(res));
+				out(CSTR(buf));
 			} else {
 				out(CSTR("Other"));
 			}
