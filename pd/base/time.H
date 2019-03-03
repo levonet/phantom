@@ -34,7 +34,7 @@ struct interval_t : dim_t<interval_t, int64_t> {
 
 namespace interval {
 
-inline constexpr interval_t from_microseconds(__suseconds_t x) {
+inline constexpr interval_t from_microseconds(suseconds_t x) {
 	return interval_t(x);
 }
 
