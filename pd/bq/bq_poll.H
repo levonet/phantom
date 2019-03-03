@@ -10,7 +10,7 @@
 
 #include <pd/base/time.H>
 
-#include <sys/poll.h>
+#include <poll.h>
 
 #pragma GCC visibility push(default)
 
